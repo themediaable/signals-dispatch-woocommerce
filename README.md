@@ -24,6 +24,8 @@ Signals Dispatch for WooCommerce integrates your WooCommerce store with the What
 - PHP 7.4 or higher
 - WhatsApp Business Account with Cloud API access
 
+> **New to WhatsApp Business API?** See our [WhatsApp API Setup Guide](docs/whatsapp-api-setup.md) for step-by-step instructions on obtaining your credentials.
+
 ## Installation
 
 1. Download the plugin from GitHub or install via Composer
@@ -32,6 +34,8 @@ Signals Dispatch for WooCommerce integrates your WooCommerce store with the What
 4. Activate the plugin through the WordPress admin
 
 ## Configuration
+
+For detailed instructions on obtaining these credentials, see the [WhatsApp API Setup Guide](docs/whatsapp-api-setup.md).
 
 ### Step 1: API Credentials
 

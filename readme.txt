@@ -47,6 +47,8 @@ This plugin connects to the Meta WhatsApp Business Cloud API to send messages. B
 
 = Configuration =
 
+For detailed instructions on obtaining your WhatsApp Business API credentials, see the [WhatsApp API Setup Guide](https://github.com/themediaable/signals-dispatch-woocommerce/blob/main/docs/whatsapp-api-setup.md).
+
 **Step 1: API Credentials**
 
 Navigate to Signals → Setup and enter your WhatsApp Business API credentials:
