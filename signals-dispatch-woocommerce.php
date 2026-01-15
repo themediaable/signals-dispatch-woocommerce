@@ -1,0 +1,63 @@
+<?php
+/**
+ * Plugin Name: Signals Dispatch for WooCommerce
+ * Description: Sends WooCommerce order update notifications via templated utility messages with logs, queueing, and webhooks.
+ * Version: 0.2.0
+ * Author: TheMediaAble
+ * License: GPLv2 or later
+ * Text Domain: signals-dispatch-woocommerce
+ * Requires PHP: 7.4
+ * Requires at least: 6.0
+ *
+ * @package TMASD\Signals\Dispatch
+ */
+
+declare(strict_types=1);
+
+defined( 'ABSPATH' ) || exit;
+
+// Define plugin constants in global namespace.
+define( 'TMASD_VERSION', '0.2.0' );
+define( 'TMASD_PLUGIN_FILE', __FILE__ );
+define( 'TMASD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'TMASD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'TMASD_NAMESPACE', 'TMASD\\Signals\\Dispatch' );
+define( 'TMASD_OPTION_PHONE_NUMBER_ID', 'tmasd_phone_number_id' );
+define( 'TMASD_OPTION_WABA_ID', 'tmasd_waba_id' );
+define( 'TMASD_OPTION_ACCESS_TOKEN', 'tmasd_access_token' );
+define( 'TMASD_OPTION_WEBHOOK_VERIFY_TOKEN', 'tmasd_webhook_verify_token' );
+define( 'TMASD_ACTION_SEND_TEMPLATE', 'tmasd_send_template_message' );
+define( 'TMASD_CAPABILITY', 'manage_woocommerce' );
+
+// Load Composer autoloader.
+$tmasd_autoload = TMASD_PLUGIN_DIR . 'vendor/autoload.php';
+if ( file_exists( $tmasd_autoload ) ) {
+	require_once $tmasd_autoload;
+}
+
+// Use new Container-based architecture.
+use TMASD\Signals\Dispatch\Core\Container;
+
+// Activation hook.
+register_activation_hook(
+	__FILE__,
+	static function (): void {
+		Container::get_instance()->activate();
+	}
+);
+
+// Deactivation hook.
+register_deactivation_hook(
+	__FILE__,
+	static function (): void {
+		Container::get_instance()->deactivate();
+	}
+);
+
+// Initialize on plugins_loaded.
+add_action(
+	'plugins_loaded',
+	static function (): void {
+		Container::get_instance()->boot();
+	}
+);

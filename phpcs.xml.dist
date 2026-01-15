@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ruleset name="Signals Dispatch for WooCommerce">
+    <description>PHP_CodeSniffer ruleset for Signals Dispatch for WooCommerce plugin.</description>
+
+    <!-- What to scan -->
+    <file>.</file>
+
+    <!-- Exclude paths -->
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+
+    <!-- How to scan -->
+    <arg value="sp"/>
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+
+    <!-- Rules: WordPress Coding Standards -->
+    <rule ref="WordPress">
+        <!-- Allow short array syntax -->
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+        <!-- Allow PSR-4 file naming for namespaced classes -->
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    </rule>
+
+    <!-- Rules: WordPress Extra -->
+    <rule ref="WordPress-Extra">
+        <exclude name="WordPress.Files.FileName"/>
+    </rule>
+
+    <!-- Rules: WordPress Docs -->
+    <rule ref="WordPress-Docs"/>
+
+    <!-- Rules: PHP Compatibility -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- PHP version check -->
+    <config name="testVersion" value="7.4-"/>
+
+    <!-- Text domain for i18n -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="signals-dispatch-woocommerce"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Minimum WordPress version -->
+    <config name="minimum_wp_version" value="6.0"/>
+
+    <!-- Prefixes for hooks, options, etc. -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="tmasd"/>
+                <element value="TMASD"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Allow typed properties (PHP 7.4+) -->
+    <rule ref="Universal.NamingConventions.NoReservedKeywordParameterNames">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
+</ruleset>

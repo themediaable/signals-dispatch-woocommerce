@@ -1,0 +1,23 @@
+.tmasd-admin .tmasd-panel {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.tmasd-admin .tmasd-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 16px 0 24px;
+}
+
+.tmasd-admin .tmasd-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    padding: 16px;
+}
+
+.tmasd-admin .tmasd-card h2 {
+    margin-top: 0;
+}
