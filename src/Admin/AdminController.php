@@ -77,6 +77,13 @@ final class AdminController extends AbstractAdminController {
 	private HealthController $health_controller;
 
 	/**
+	 * Help page controller.
+	 *
+	 * @var HelpController
+	 */
+	private HelpController $help_controller;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param LogRepository      $log_repo     Log repository.
@@ -96,6 +103,7 @@ final class AdminController extends AbstractAdminController {
 		$this->dispatch_controller = new DispatchController( $mapping_repo );
 		$this->logs_controller     = new LogsController( $log_repo );
 		$this->health_controller   = new HealthController( $log_repo );
+		$this->help_controller     = new HelpController();
 	}
 
 	/**
@@ -164,6 +172,15 @@ final class AdminController extends AbstractAdminController {
 			$cap,
 			'tmasd-health',
 			array( $this->health_controller, 'render' )
+		);
+
+		add_submenu_page(
+			'tmasd-setup',
+			__( 'Help & Documentation', 'signals-dispatch-woocommerce' ),
+			__( 'Help', 'signals-dispatch-woocommerce' ),
+			$cap,
+			'tmasd-help',
+			array( $this->help_controller, 'render' )
 		);
 	}
 
